@@ -27,4 +27,12 @@ replay_pid*
 .gradle
 build
 HELP.md
+build.gradle
+
+### H2 ###
+*.mv.db
+*.trace.db
+*.DS_Store
+
+
 
