@@ -17,12 +17,13 @@ public class Transaktion {
     private String beschreibung;
 
     public enum Kategorie {
+        Gehalt,
+        Gutschrift,
         Miete,
         Transport,
         Lebensmittel,
         Freizeit,
         Kleidung,
-
     }
     @Enumerated(value = EnumType.STRING)
     private Kategorie kategorie;
@@ -30,6 +31,7 @@ public class Transaktion {
         Ausgabe,
         Einnahme,
     }
+
     @Enumerated(value = EnumType.STRING)
     private TransaktionsArt art;
 
@@ -61,7 +63,7 @@ public class Transaktion {
         return datum;
     }
 
-    public void setDate(LocalDate datum) {
+    public void setDatum(LocalDate datum) {
         this.datum = datum;
     }
 
