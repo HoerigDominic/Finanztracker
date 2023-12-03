@@ -1,6 +1,5 @@
 package de.htwBerlin.webtech.Finanztracker.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -8,8 +7,14 @@ import java.util.List;
 @RestController
 public class TransaktionController {
 
-    @Autowired
-    private TransaktionService service;
+    private final TransaktionService service;
+
+    public TransaktionController(TransaktionService service) {
+        this.service = service;
+    }
+
+    @GetMapping("/transaktionen")
+    public List<Transaktion> getAllTransaktionen() {return service.getAll();}
 
     @PostMapping("/transaktionen")
     public Transaktion createTransatkion(@RequestBody Transaktion transaktion) {
@@ -18,13 +23,11 @@ public class TransaktionController {
 
     @GetMapping("/transaktionen/{id}")
     public Transaktion getTransaktion(@PathVariable Long id) {
-        return service.get(id);
+        return service.getById(id);
     }
 
     @PutMapping("/transaktionen/{id}")
-    public void updateTransaktion(@PathVariable Long id, @RequestBody Transaktion transaktion) {
-        service.update(id, transaktion);
-    }
+    public void updateTransaktion(@PathVariable Long id, @RequestBody Transaktion transaktion) {service.update(id, transaktion);}
 
    @DeleteMapping("/transaktionen/{id}")
    public void deleteTransaktion(@PathVariable Long id) {
