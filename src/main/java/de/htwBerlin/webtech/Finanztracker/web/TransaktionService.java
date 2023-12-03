@@ -5,22 +5,27 @@ import de.htwBerlin.webtech.Finanztracker.web.TransaktionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class TransaktionService {
 
-    @Autowired
-    private TransaktionRepository repo;
+    private final TransaktionRepository repo;
+
     public TransaktionService(TransaktionRepository repo) {
         this.repo = repo;
     }
 
+    public List <Transaktion> getAll() {
+        List <Transaktion> transaktionen = repo.findAll();
+        return transaktionen;
+    }
     public Transaktion create (Transaktion transaktion) {
         return repo.save(transaktion);
     }
 
-    public Transaktion get(Long transaktionId) {
+    public Transaktion getById(Long transaktionId) {
         return repo.findById(transaktionId).orElseThrow(()-> new RuntimeException());
     }
 
