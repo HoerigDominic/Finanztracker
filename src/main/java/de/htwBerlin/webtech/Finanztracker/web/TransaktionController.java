@@ -27,10 +27,16 @@ public class TransaktionController {
     }
 
     @PutMapping("/transaktionen/{id}")
-    public void updateTransaktion(@PathVariable Long id, @RequestBody Transaktion transaktion) {service.update(id, transaktion);}
+    public void updateTransaktion(@PathVariable String id, @RequestBody Transaktion transaktion) {
+        Long transaktionId = Long.parseLong(id);
+        service.update(transaktionId, transaktion);}
 
    @DeleteMapping("/transaktionen/{id}")
-   public void deleteTransaktion(@PathVariable Long id) {
-       service.delete(id);
+   public void deleteTransaktion(@PathVariable String id) {
+        Long transaktionId = Long.parseLong(id);
+        service.delete(transaktionId);
+   }
+   @DeleteMapping("/transaktionen")
+    public void deleteAllTransaktionen() {service.deleteAll();
    }
 }
