@@ -3,6 +3,7 @@ package de.htwBerlin.webtech.Finanztracker.web;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -11,7 +12,7 @@ public class Transaktion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private double betrag;
+    private BigDecimal betrag;
     @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate datum;
     private String beschreibung;
@@ -37,7 +38,7 @@ public class Transaktion {
 
     public Transaktion() {}
 
-    public Transaktion(Long id, double betrag, LocalDate datum, String beschreibung, Kategorie kategorie, TransaktionsArt art) {
+    public Transaktion(Long id, BigDecimal betrag, LocalDate datum, String beschreibung, Kategorie kategorie, TransaktionsArt art) {
         this.id = id;
         this.betrag = betrag;
         this.datum = datum;
@@ -51,11 +52,11 @@ public class Transaktion {
         return id;
     }
 
-    public double getBetrag() {
+    public BigDecimal getBetrag() {
         return betrag;
     }
 
-    public void setBetrag(double betrag) {
+    public void setBetrag(BigDecimal betrag) {
         this.betrag = betrag;
     }
 
