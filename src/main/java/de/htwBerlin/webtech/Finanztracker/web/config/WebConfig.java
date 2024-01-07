@@ -15,5 +15,9 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/transaktionen")
                 .allowedMethods("*")
                 .allowedOrigins("http://localhost:8081");
+        registry.addMapping("/transaktionen/{id}")
+                .allowedMethods("*")
+                .allowedOrigins("http://localhost:8081");
+
     }
 }
