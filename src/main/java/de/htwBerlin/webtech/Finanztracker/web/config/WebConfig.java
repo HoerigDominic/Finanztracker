@@ -14,10 +14,10 @@ public class WebConfig implements WebMvcConfigurer {
         WebMvcConfigurer.super.addCorsMappings(registry);
         registry.addMapping("/transaktionen")
                 .allowedMethods("*")
-                .allowedOrigins("http://localhost:8081");
+                .allowedOrigins("http://localhost:8082");
         registry.addMapping("/transaktionen/{id}")
                 .allowedMethods("*")
-                .allowedOrigins("http://localhost:8081");
+                .allowedOrigins("http://localhost:8082");
 
     }
 }
